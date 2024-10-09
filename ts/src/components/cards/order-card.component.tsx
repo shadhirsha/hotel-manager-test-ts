@@ -1,6 +1,6 @@
 import React from 'react'; 
 import { Order } from '../../types/order.type';
-import './card.css'
+import { SCircle, SCircleContent } from '../molecules/order-circle';
 
 interface Props {
     type: string;
@@ -9,7 +9,7 @@ interface Props {
     result: (d: object) => void
 }
 
-export const Card: React.FC<Props> = ({
+export const OrderCard: React.FC<Props> = ({
     type,
     data,
     buttonText,
@@ -18,11 +18,11 @@ export const Card: React.FC<Props> = ({
     const badgeColor = (txt: string) => {
         switch (txt) {
             case 'New':
-                return ({backgroundColor:'red'});
+                return 'red';
             case 'Active':
-                return ({backgroundColor:'blue'});
+                return 'blue';
             default:
-                return ({backgroundColor:'white'});
+                return 'white';
         }
     }
 
@@ -30,9 +30,9 @@ export const Card: React.FC<Props> = ({
         <div>
             <div className='d-flex gap-2 mb-2'>
                 {type}
-                <div className="circle" style={badgeColor(type)}>
-                    <span className="circle__content">{data?.length}</span>
-                </div>
+                <SCircle bgColor={badgeColor(type)}>
+                    <SCircleContent>{data?.length}</SCircleContent>
+                </SCircle>
             </div>
 
             {data?.map((i) =>

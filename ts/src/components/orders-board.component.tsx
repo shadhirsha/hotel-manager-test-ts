@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Card } from './molecules/order-card';
+import { OrderCard } from './cards';
 import data from '../data/orders.json'
 import { Order, OrderStatus } from '../types/order.type';
 
@@ -44,7 +44,7 @@ export const OrdersBoard: React.FC = () => {
   return (
     <span className='row' style={{ margin: 24 }}>
       <div className='col-4'>
-        {newOrders && <Card
+        {newOrders && <OrderCard
           type = 'New'
           data = {newOrders}
           buttonText = "Approve"
@@ -53,7 +53,7 @@ export const OrdersBoard: React.FC = () => {
       </div>
 
       <div className='col-4'>
-        {activeOrders && <Card
+        {activeOrders && <OrderCard
           type = 'Active'
           data = {activeOrders}
           buttonText = "Complete"
@@ -62,7 +62,7 @@ export const OrdersBoard: React.FC = () => {
       </div>
 
       <div className='col-4'>
-        {readyOrders && <Card
+        {readyOrders && <OrderCard
           type = 'Ready'
           data = {readyOrders}
           buttonText = "Ready"
